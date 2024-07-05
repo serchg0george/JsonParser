@@ -41,12 +41,32 @@ public class PostalCodeSearch {
                 .collect(Collectors.toList());
     }
 
+
     public static void main(String[] args) {
         try(Scanner scanner = new Scanner(System.in)) {
             PostalCodeSearch postalCodeSearch = new PostalCodeSearch("C:/Users/Serchg/Desktop/Places-in-Bulgaria.json");
+            boolean isContinue = true;
+            while(isContinue) {
+                System.out.println("Enter the postal code here: ");
+                String searchRequest = scanner.nextLine();
+                List<Location> locations = postalCodeSearch.searchByPostalCode(searchRequest);
 
-            System.out.println("Enter the postal code here: ");
-            String searchRequest = scanner.nextLine();
+                locations.forEach(location -> {
+                    System.out.println("Name: " + location.getName());
+                    System.out.println("Type: " + location.getType());
+                    System.out.println("Town Hall: " + location.getTownHall());
+                    System.out.println("Phone Code: " + location.getPhoneCode());
+                    System.out.println("Latitude: " + location.getLatitude());
+                    System.out.println("Longitude: " + location.getLongitude());
+                    System.out.println("Post Codes: " + location.getPostCodes());
+                    System.out.println();
+                });
+
+                System.out.println("Continue? (y/n)");
+                if(scanner.hasNext("n")) {
+                    isContinue = false;
+                }
+            }
 
 //            System.out.println("Enter city name here: ");
 //            String searchRequest = scanner.nextLine();
@@ -54,18 +74,7 @@ public class PostalCodeSearch {
 //            System.out.println("Enter town hall name here: ");
 //            String searchRequest = scanner.nextLine();
 
-            List<Location> locations = postalCodeSearch.searchByPostalCode(searchRequest);
 
-            locations.forEach(location -> {
-                System.out.println("Name: " + location.getName());
-                System.out.println("Type: " + location.getType());
-                System.out.println("Town Hall: " + location.getTownHall());
-                System.out.println("Phone Code: " + location.getPhoneCode());
-                System.out.println("Latitude: " + location.getLatitude());
-                System.out.println("Longitude: " + location.getLongitude());
-                System.out.println("Post Codes: " + location.getPostCodes());
-                System.out.println();
-            });
 
         } catch (IOException e) {
             e.printStackTrace();
