@@ -1,6 +1,9 @@
+package model;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+
 
 public class Location {
     private String name;
@@ -83,7 +86,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" +
+        return "model.Location{" +
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", town_hall='" + town_hall + '\'' +

@@ -1,9 +1,13 @@
+package model;
+
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class Municipality {
+
     private Map<String, Location> locations = new HashMap<>();
 
     @JsonAnySetter
@@ -17,7 +21,7 @@ public class Municipality {
 
     @Override
     public String toString() {
-        return "Municipality{" +
+        return "model.Municipality{" +
                 "locations=" + locations +
                 '}';
     }
